@@ -19,8 +19,8 @@ int main() {
   vexcodeInit();
 
   Competition.drivercontrol(usercontrol);
-  Competition.autonomous(Autonomous);
-
+  Competition.autonomous(Autonomous); // to sleepy to text
+  
 
   
 }
