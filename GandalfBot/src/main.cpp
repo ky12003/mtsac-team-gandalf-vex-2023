@@ -21,6 +21,4 @@ int main() {
   Competition.drivercontrol(usercontrol);
   Competition.autonomous(Autonomous); // to sleepy to text
   
-
-  
 }
