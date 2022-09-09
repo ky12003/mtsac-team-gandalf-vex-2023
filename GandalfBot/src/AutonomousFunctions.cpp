@@ -12,7 +12,7 @@ void turn_counterclockwise(double turnDegree) {
   rightDrive.spinFor(directionType::fwd, turnDegree, msec, 50, velocityUnits::pct);
 }
 
-//
+//Travels forward at an (percent) velocity for (amount) revolution(s)
 void travelForward(int velocityPercent, double revolutionCount){
   leftDrive.setVelocity(velocityPercent, pct);
   rightDrive.setVelocity(velocityPercent, pct);
