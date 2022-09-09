@@ -8,6 +8,9 @@ void turn_clockwise(double turnDegree);
 
 void turn_counterclockwise(double turnDegree);
 
+//Drive forward
+void travelForward(double distanceCM);
+
 
 
 
