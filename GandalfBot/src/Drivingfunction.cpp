@@ -74,3 +74,11 @@ void arcadedrive(){
     rightDrive.stop(coast);
   }
 }
+
+//intake wheel control
+void intakecontrol(){
+  if(controller1.ButtonR2.pressing())
+  {
+    intakeSpinMotor.spin(fwd, 50 , pct);
+  }
+}
