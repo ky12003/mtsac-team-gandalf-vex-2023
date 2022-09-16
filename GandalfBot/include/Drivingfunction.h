@@ -4,7 +4,7 @@
 //Drive
 void tankdrive();
 void arcadedrive();
-double toggleNoobMode();
-
+double toggleSpeedMode();
+void intakecontrol();
 
 #endif

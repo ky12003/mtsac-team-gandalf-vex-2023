@@ -76,9 +76,22 @@ void arcadedrive(){
 }
 
 //intake wheel control
+bool doIntake = false;
+bool intakeToggleBuffering = false;
 void intakecontrol(){
   if(controller1.ButtonR2.pressing())
   {
+    if (!intakeToggleBuffering) {
+      intakeToggleBuffering = true;
+      doIntake = !doIntake;
+    }
+  } else {
+    intakeToggleBuffering = false;
+  }
+
+  if (doIntake) {
     intakeSpinMotor.spin(fwd, 50 , pct);
+  } else {
+    intakeSpinMotor.stop();
   }
 }

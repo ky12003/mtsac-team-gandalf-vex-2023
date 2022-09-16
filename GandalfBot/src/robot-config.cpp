@@ -35,12 +35,15 @@ motor_group rightDrive( BackRightTop, BackRightBottom, BackRightTop);
 
 //intake motors
 //Fronttopright, Fronttopleft
-motor intakeSpinMotor1(PORT12, ratio6_1, false);
-motor intakeSpinMotor2(PORT20, ratio6_1,  false);
+motor intakeSpinMotor1(PORT13, ratio18_1, false);
+motor intakeSpinMotor2(PORT20, ratio18_1,  false);
 
 //intake motors-group
 //Fronttopright, Fronttopleft
 motor_group intakeSpinMotor(intakeSpinMotor1, intakeSpinMotor2); 
+
+// the 2 inertial sensors
+
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

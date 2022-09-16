@@ -8,6 +8,7 @@ void usercontrol(){
   while (1){
     // tankdrive();
     arcadedrive();
+    intakecontrol();
   }
 }
 
