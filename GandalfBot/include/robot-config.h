@@ -15,8 +15,9 @@ extern controller controller1;
 // extern motor right1;
 extern motor_group leftDrive;
 extern motor_group rightDrive;
+extern motor intakeSpinMotor1;
+extern motor intakeSpinMotor2;
 extern motor_group intakeSpinMotor;
-
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

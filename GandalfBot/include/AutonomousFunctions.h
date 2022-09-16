@@ -11,7 +11,7 @@ void turn_counterclockwise(double turnDegree);
 //Drive forward
 void travelForward(double distanceCM);
 
-
+void InertialTurn(turnType dir, double speed, double DEGREES, double timeout);
 
 
 #endif
