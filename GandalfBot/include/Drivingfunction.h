@@ -5,6 +5,7 @@
 void tankdrive();
 void arcadedrive();
 double toggleSpeedMode();
-void intakecontrol();
+void intakeControl();
+void toggleFlywheel();
 
 #endif

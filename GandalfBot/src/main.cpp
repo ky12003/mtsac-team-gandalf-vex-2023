@@ -6,9 +6,9 @@ using namespace vex;
 competition Competition;
 void usercontrol(){
   while (1){
-    // tankdrive();
-    arcadedrive();
-    intakecontrol();
+    tankdrive();
+    // arcadedrive();
+    intakeControl();
   }
 }
 

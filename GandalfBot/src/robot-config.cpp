@@ -8,40 +8,48 @@ brain Brain;
 controller controller1(primary);
 
 /*-----
-Drivetrain motors (naming scheme below, orientation facing forward from the back of the robot)
+MOTORS 
 ------*/
+// DRIVETRAIN MOTORS (naming scheme below)
 // A: frontmost motor group
 // B: middle motor group
 // C: backmost motor group
 // left/right: motors on the left/right
 // top/bottom: frontmost/backmost motors in motor group
-// motor FrontLeftBottom(PORT19, ratio18_1, true);
-// motor FrontLeftTop(PORT20, ratio18_1, false);
 
-// motor FrontRightTop(PORT12, ratio18_1, false); 
-// motor FrontRightBottom(PORT11, ratio18_1, true);
+motor BackRightTop(PORT19, ratio18_1, false); 
+motor BackRightBottom(PORT20, ratio18_1, true);
 
-motor BackRightTop(PORT1, ratio18_1, true); 
-motor BackRightBottom(PORT2, ratio18_1, true);
+motor BackLeftTop(PORT11, ratio18_1, true); 
+motor BackLeftBottom(PORT12, ratio18_1, false);
 
-motor BackLeftTop(PORT10, ratio18_1, false); 
-motor BackLeftBottom(PORT9, ratio18_1, false);
+//INTAKE MOTORS
+//(intake 1: in the front, intake 2: in the back)
+motor intakeSpinMotor1(PORT15, ratio18_1, true);
+motor intakeSpinMotor2(PORT11, ratio18_1,  false);
 
+// FLYWHEEL MOTORS
+// (left/right side facing torwards the back of the bot)
+motor leftFlywheelMotor(PORT1, ratio36_1, true);
+motor rightFlywheelMotor(PORT9, ratio36_1, true);
 
-// FrontLeftTop, FrontLeftBottom,
-// FrontRightTop, FrontRightBottom,
-motor_group leftDrive( BackLeftTop, BackLeftBottom, BackLeftTop);
-motor_group rightDrive( BackRightTop, BackRightBottom, BackRightTop);
+/*-----
+MOTOR GROUPS
+------*/
 
-//intake motors
-//Fronttopright, Fronttopleft
-motor intakeSpinMotor1(PORT13, ratio18_1, false);
-motor intakeSpinMotor2(PORT20, ratio18_1,  false);
+// LEFT SIDE/RIGHT SIDE DRIVE MOTORGROUP
+motor_group leftDrive( BackLeftTop, BackLeftBottom);
+motor_group rightDrive( BackRightTop, BackRightBottom);
 
-//intake motors-group
-//Fronttopright, Fronttopleft
-motor_group intakeSpinMotor(intakeSpinMotor1, intakeSpinMotor2); 
+// INTAKE MOTORGROUP
+motor_group intakeSpinMotors(intakeSpinMotor1, intakeSpinMotor2); 
 
+// FLYWHEEL PAIR MOTORGROUP
+motor_group flywheelSpinMotors(leftFlywheelMotor, rightFlywheelMotor);
+
+/*-----
+SENSORS 
+------*/
 // the 2 inertial sensors
 
 

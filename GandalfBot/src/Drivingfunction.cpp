@@ -1,6 +1,36 @@
 #include "vex.h"
 #include "Drivingfunction.h"
 
+//Drive
+void tankdrive(){
+  double speedValue = toggleSpeedMode();
+  if(abs(controller1.Axis3.value())>5||abs(controller1.Axis2.value())>5)
+  {
+  leftDrive.spin(fwd, controller1.Axis3.value()*speedValue, pct);
+  rightDrive.spin(fwd, controller1.Axis2.value()*speedValue, pct);
+  }
+  else
+  {
+    leftDrive.stop(coast);
+    rightDrive.stop(coast);
+  }
+}
+//Individual wheel control
+void arcadedrive(){
+  double speedValue = toggleSpeedMode();
+  if(abs(controller1.Axis3.value())>5 || abs(controller1.Axis1.value()) > 5)
+  {
+    rightDrive.spin(fwd, (controller1.Axis3.value()*speedValue) - (controller1.Axis1.value()*speedValue), pct);
+    leftDrive.spin(fwd, (controller1.Axis3.value()*speedValue) + (controller1.Axis1.value()*speedValue), pct);
+  }
+  else
+  {
+    leftDrive.stop(coast);
+    rightDrive.stop(coast);
+  }
+}
+
+// TOGGLES
 
 // OPTIONS:
 // 0: 100% speed (default, set with X button)
@@ -31,67 +61,82 @@ double speedToggleOption() {
 }
 
 double toggleOption = 1;
-bool buttonNoobToggle = false;
+bool speedToggleBuffering = false;
 double toggleSpeedMode(){
   double tempOption = speedToggleOption();
   if(tempOption != -1){
-    if(!buttonNoobToggle){
-      buttonNoobToggle = true;
+    if(!speedToggleBuffering){
+      speedToggleBuffering = true;
       toggleOption = tempOption;
     }
   } else {
-    buttonNoobToggle = false;
+    speedToggleBuffering = false;
   }
 
   return toggleOption;
 }
 
-//Drive
-void tankdrive(){
-  double speedValue = toggleSpeedMode();
-  if(abs(controller1.Axis3.value())>5||abs(controller1.Axis2.value())>5)
-  {
-  leftDrive.spin(fwd, controller1.Axis3.value()*speedValue, pct);
-  rightDrive.spin(fwd, controller1.Axis2.value()*speedValue, pct);
+//flywheel control
+bool spinFlywheel = false;
+bool flywheelToggleBuffering = false;
+void toggleFlywheel(){
+  if(controller1.ButtonR1.pressing()){
+    if(!flywheelToggleBuffering){
+      flywheelToggleBuffering = true;
+      spinFlywheel = !spinFlywheel;
+    }
+  } else {
+    flywheelToggleBuffering = false;
   }
-  else
-  {
-    leftDrive.stop(coast);
-    rightDrive.stop(coast);
-  }
-}
-//Individual wheel control
-void arcadedrive(){
-  double speedValue = toggleSpeedMode();
-  if(abs(controller1.Axis3.value())>5 || abs(controller1.Axis1.value()) > 5)
-  {
-    rightDrive.spin(fwd, (controller1.Axis3.value()*speedValue) - (controller1.Axis1.value()*speedValue), pct);
-    leftDrive.spin(fwd, (controller1.Axis3.value()*speedValue) + (controller1.Axis1.value()*speedValue), pct);
-  }
-  else
-  {
-    leftDrive.stop(coast);
-    rightDrive.stop(coast);
+
+  if (spinFlywheel) {
+    flywheelSpinMotors.spin(fwd, 100, pct);
+  } else {
+    flywheelSpinMotors.stop();
   }
 }
 
 //intake wheel control
-bool doIntake = false;
+bool doIntakeFront = false;
+bool doIntakeBack = false;
 bool intakeToggleBuffering = false;
-void intakecontrol(){
+void intakeControl(){
   if(controller1.ButtonR2.pressing())
   {
     if (!intakeToggleBuffering) {
+      
       intakeToggleBuffering = true;
-      doIntake = !doIntake;
+      doIntakeFront = !doIntakeFront;
+      doIntakeBack = false;
+      if (doIntakeFront) {
+        controller1.rumble("-");
+      } else {
+        controller1.rumble("..");
+      }
     }
-  } else {
+  } 
+  else if (controller1.ButtonL2.pressing()) {
+    if (!intakeToggleBuffering) {
+      intakeToggleBuffering = true;
+      doIntakeBack = !doIntakeBack;
+      doIntakeFront = false;
+      if (doIntakeBack) {
+        controller1.rumble(".");
+      } else {
+        controller1.rumble("..");
+      }
+    }
+  }
+  else {
+    // controller1.rumble(".");
     intakeToggleBuffering = false;
   }
 
-  if (doIntake) {
-    intakeSpinMotor.spin(fwd, 50 , pct);
+  if (doIntakeFront) {
+    intakeSpinMotors.spin(fwd, 100, pct);
+  } else if (doIntakeBack) {
+    intakeSpinMotors.spin(directionType::rev, 100, pct);
   } else {
-    intakeSpinMotor.stop();
+    intakeSpinMotors.stop();
   }
 }
