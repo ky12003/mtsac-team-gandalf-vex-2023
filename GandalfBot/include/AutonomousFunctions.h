@@ -4,14 +4,15 @@
 #ifndef AUNTON_FUNCTIONS
 #define AUNTON_FUNCTIONS
 
-void turn_clockwise(double turnDegree);
+void turnClockwise(double turnDegree);
 
-void turn_counterclockwise(double turnDegree);
+void turnCounterclockwise(double turnDegree);
 
 //Drive forward
-void travelForward(double distanceCM);
+void moveForward(double revolutionCount, double velocityPercent);
 
 void InertialTurn(turnType dir, double speed, double DEGREES, double timeout);
+
 
 
 #endif

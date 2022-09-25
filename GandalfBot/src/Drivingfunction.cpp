@@ -80,7 +80,7 @@ double toggleSpeedMode(){
 bool spinFlywheel = false;
 bool flywheelToggleBuffering = false;
 void toggleFlywheel(){
-  if(controller1.ButtonR1.pressing()){
+  if(controller1.ButtonL2.pressing()){
     if(!flywheelToggleBuffering){
       flywheelToggleBuffering = true;
       spinFlywheel = !spinFlywheel;
@@ -101,7 +101,7 @@ bool doIntakeFront = false;
 bool doIntakeBack = false;
 bool intakeToggleBuffering = false;
 void intakeControl(){
-  if(controller1.ButtonR2.pressing())
+  if(controller1.ButtonR1.pressing())
   {
     if (!intakeToggleBuffering) {
       
@@ -115,7 +115,7 @@ void intakeControl(){
       }
     }
   } 
-  else if (controller1.ButtonL2.pressing()) {
+  else if (controller1.ButtonR2.pressing()) {
     if (!intakeToggleBuffering) {
       intakeToggleBuffering = true;
       doIntakeBack = !doIntakeBack;

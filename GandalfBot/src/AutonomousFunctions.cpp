@@ -2,23 +2,29 @@
 #include <AutonomousFunctions.h>
 
 
-void turn_clockwise(double turnDegree) {
-  leftDrive.spinFor(directionType::fwd, turnDegree, msec, 50, velocityUnits::pct);
-  rightDrive.spinFor(directionType::rev, turnDegree, msec, 50, velocityUnits::pct);
+void turnClockwise(double turnDegree) {
+  leftDrive.spinFor(directionType::fwd, turnDegree, rev, false);
+  rightDrive.spinFor(directionType::rev, turnDegree, rev, true);
+
+  leftDrive.stop();
+  rightDrive.stop();
 }
 
-void turn_counterclockwise(double turnDegree) {
-    leftDrive.spinFor(directionType::rev, turnDegree, msec, 50, velocityUnits::pct);
-  rightDrive.spinFor(directionType::fwd, turnDegree, msec, 50, velocityUnits::pct);
+void turnCounterclockwise(double turnDegree) {
+  leftDrive.spinFor(directionType::rev, turnDegree, rev, false);
+  rightDrive.spinFor(directionType::fwd, turnDegree, rev, true);
+
+  leftDrive.stop();
+  rightDrive.stop();
 }
 
 //Travels forward at an (percent) velocity for (amount) revolution(s)
-void travelForward(int velocityPercent, double revolutionCount){
+void moveForward(double revolutionCount, double velocityPercent){
   leftDrive.setVelocity(velocityPercent, pct);
   rightDrive.setVelocity(velocityPercent, pct);
 
   leftDrive.spinFor(forward, revolutionCount, rev, false);
-  rightDrive.spinFor(forward, revolutionCount, rev, false);
+  rightDrive.spinFor(forward, revolutionCount, rev, true);
 
   leftDrive.stop();
   rightDrive.stop();
