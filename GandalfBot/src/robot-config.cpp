@@ -31,8 +31,8 @@ motor intakeSpinMotor2(PORT4, ratio36_1, true);
 
 // FLYWHEEL MOTORS
 // (left/right side facing torwards the back of the bot)
-motor leftFlywheelMotor(PORT1, ratio36_1, false);
-motor rightFlywheelMotor(PORT9, ratio36_1, true);
+motor leftFlywheelMotor(PORT1, ratio36_1, true);
+motor rightFlywheelMotor(PORT9, ratio36_1, false);
 
 /*-----
 MOTOR GROUPS
