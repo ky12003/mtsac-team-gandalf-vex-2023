@@ -4,12 +4,11 @@
 #ifndef AUNTON_FUNCTIONS
 #define AUNTON_FUNCTIONS
 
-void turnClockwise(double turnDegree);
-
-void turnCounterclockwise(double turnDegree);
-
-//Drive forward
-void moveForward(double revolutionCount, double velocityPercent);
+//DRIVE
+void moveForward(double distanceInches, double velocityPercent); // DRIVE FORWARD
+void turnInPlace(double turnDegrees, double velocityPercent); // turn the robot in-place clockwise/counterclockwise 
+void doIntake(double timeMSec); // turn the intake for a certain amount of time
+void shootDisks(double timeMSec); // turn flywheels to shoot the disks out
 
 void InertialTurn(turnType dir, double speed, double DEGREES, double timeout);
 
