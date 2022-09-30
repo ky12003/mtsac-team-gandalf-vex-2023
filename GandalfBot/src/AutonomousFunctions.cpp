@@ -26,22 +26,27 @@ void turnInPlace(double turnDegrees, double velocityPercent) {
   leftDrive.setVelocity(velocityPercent, pct);
   rightDrive.setVelocity(velocityPercent, pct);
 
-  leftDrive.spinFor(directionType::fwd, (wheelDegrees * GEAR_RATIO) / 2, rev, false);
-  rightDrive.spinFor(directionType::rev, (wheelDegrees * GEAR_RATIO) / 2, rev, true);
+  leftDrive.spinFor(directionType::fwd, (wheelDegrees * GEAR_RATIO) / 2, deg, false);
+  rightDrive.spinFor(directionType::fwd, (wheelDegrees * GEAR_RATIO) / 2, deg, true);
 
   leftDrive.stop();
   rightDrive.stop();
 }
 
 // turn the intake for a certain amount of time
-void doIntake(double timeMSec) {
+void doIntake(double timeMSec, double velocityPercent) {
+  intakeSpinMotors.setVelocity(velocityPercent, pct);
+
   intakeSpinMotors.spinFor(timeMSec, msec);
 }
 
 // turn flywheels to shoot the disks out
-void shootDisks(double timeMSec) {
+void shootDisks(double timeMSec, double velocityPercent) {
+  flywheelSpinMotors.setVelocity(velocityPercent, pct);
+
   flywheelSpinMotors.spinFor(timeMSec, msec);
 }
+
 
 // helper function for inertial turn
 // float inertialAverageDEG()
