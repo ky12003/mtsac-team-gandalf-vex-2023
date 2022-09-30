@@ -10,6 +10,7 @@ void usercontrol(){
     tankdrive();
     // arcadedrive();
     intakeControl();
+    toggleFlywheel();
   }
 }
 

@@ -1,34 +1,46 @@
 #include "vex.h"
 #include <AutonomousFunctions.h>
 
+// help from: https://medium.com/thefloatingpoint/autonomous-driving-tutorial-for-vex-v5-robots-774703ca2d3c
+//Travels forward for a distance (in inches) at a given velocity (percent). Go backwards by using negative input for distance
+void moveForward(double distanceInches, double velocityPercent){
+  float inchesPerDegree = WHEEL_CIRCUMFERENCE / 360;
+  float degreesToRotate = distanceInches / inchesPerDegree;
 
-void turnClockwise(double turnDegree) {
-  leftDrive.spinFor(directionType::fwd, turnDegree, rev, false);
-  rightDrive.spinFor(directionType::rev, turnDegree, rev, true);
-
-  leftDrive.stop();
-  rightDrive.stop();
-}
-
-void turnCounterclockwise(double turnDegree) {
-  leftDrive.spinFor(directionType::rev, turnDegree, rev, false);
-  rightDrive.spinFor(directionType::fwd, turnDegree, rev, true);
-
-  leftDrive.stop();
-  rightDrive.stop();
-}
-
-//Travels forward at an (percent) velocity for (amount) revolution(s)
-void moveForward(double revolutionCount, double velocityPercent){
   leftDrive.setVelocity(velocityPercent, pct);
   rightDrive.setVelocity(velocityPercent, pct);
 
-  leftDrive.spinFor(forward, revolutionCount, rev, false);
-  rightDrive.spinFor(forward, revolutionCount, rev, true);
+  leftDrive.spinFor(forward, degreesToRotate * GEAR_RATIO, deg, false);
+  rightDrive.spinFor(forward, degreesToRotate * GEAR_RATIO, deg, true);
 
   leftDrive.stop();
   rightDrive.stop();
 
+}
+
+// turn in place (negative turn degree: counterclockwise, positive turn degree: clockwise)
+void turnInPlace(double turnDegrees, double velocityPercent) {
+  double turningRatio = TURNING_DIAMETER / WHEEL_DIAMETER;
+  double wheelDegrees = turningRatio * turnDegrees;
+
+  leftDrive.setVelocity(velocityPercent, pct);
+  rightDrive.setVelocity(velocityPercent, pct);
+
+  leftDrive.spinFor(directionType::fwd, (wheelDegrees * GEAR_RATIO) / 2, rev, false);
+  rightDrive.spinFor(directionType::rev, (wheelDegrees * GEAR_RATIO) / 2, rev, true);
+
+  leftDrive.stop();
+  rightDrive.stop();
+}
+
+// turn the intake for a certain amount of time
+void doIntake(double timeMSec) {
+  intakeSpinMotors.spinFor(timeMSec, msec);
+}
+
+// turn flywheels to shoot the disks out
+void shootDisks(double timeMSec) {
+  flywheelSpinMotors.spinFor(timeMSec, msec);
 }
 
 // helper function for inertial turn

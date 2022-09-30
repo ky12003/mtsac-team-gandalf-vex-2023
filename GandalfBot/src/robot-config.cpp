@@ -26,8 +26,9 @@ motor BackLeftBottom(PORT12, ratio18_1, false);
 //INTAKE MOTORS
 //(intakeSpinMotorBelt = conveyer belt, intake 1, 2: top, bottom spinners)
 motor intakeSpinMotorBelt(PORT8, ratio36_1, false);
-motor intakeSpinMotor1(PORT5, ratio18_1,  true);
-motor intakeSpinMotor2(PORT4, ratio18_1, true);
+motor intakeSpinMotor1(PORT5, ratio36_1,  true);
+motor intakeSpinMotor2(PORT4, ratio36_1, true);
+
 // FLYWHEEL MOTORS
 // (left/right side facing torwards the back of the bot)
 motor leftFlywheelMotor(PORT1, ratio36_1, true);
