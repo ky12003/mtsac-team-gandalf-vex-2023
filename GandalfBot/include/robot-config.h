@@ -17,6 +17,7 @@ extern motor BackLeftTop;
 extern motor BackLeftBottom;
 
 // intake motors
+extern motor intakeSpinMotorBelt;
 extern motor intakeSpinMotor1;
 extern motor intakeSpinMotor2;
 extern motor leftFlywheelMotor;
@@ -35,6 +36,16 @@ extern motor_group flywheelSpinMotors;
 /*----
 SENSORS
 -----*/
+
+/*----
+CONSTANTS
+-----*/
+/*-----
+CONSTANTS
+------*/
+const float WHEEL_DIAMETER = 4.275; // inches
+const float WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER * 3.1416;
+const float GEAR_RATIO = 1;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

@@ -24,10 +24,10 @@ motor BackLeftTop(PORT11, ratio18_1, true);
 motor BackLeftBottom(PORT12, ratio18_1, false);
 
 //INTAKE MOTORS
-//(intake 1: conveyer belt, intake 2: spinners)
-motor intakeSpinMotor1(PORT8, ratio36_1, false);
-motor intakeSpinMotor2(PORT5, ratio18_1,  true);
-
+//(intakeSpinMotorBelt = conveyer belt, intake 1, 2: top, bottom spinners)
+motor intakeSpinMotorBelt(PORT8, ratio36_1, false);
+motor intakeSpinMotor1(PORT5, ratio18_1,  true);
+motor intakeSpinMotor2(PORT4, ratio18_1, true);
 // FLYWHEEL MOTORS
 // (left/right side facing torwards the back of the bot)
 motor leftFlywheelMotor(PORT1, ratio36_1, true);
@@ -42,7 +42,7 @@ motor_group leftDrive( BackLeftTop, BackLeftBottom);
 motor_group rightDrive( BackRightTop, BackRightBottom);
 
 // INTAKE MOTORGROUP
-motor_group intakeSpinMotors(intakeSpinMotor1, intakeSpinMotor2); 
+motor_group intakeSpinMotors(intakeSpinMotorBelt, intakeSpinMotor1, intakeSpinMotor2); 
 
 // FLYWHEEL PAIR MOTORGROUP
 motor_group flywheelSpinMotors(leftFlywheelMotor, rightFlywheelMotor);
@@ -52,6 +52,9 @@ SENSORS
 ------*/
 // the 2 inertial sensors
 
+//-------
+//***CONSTANTS ARE IN .H FILE***
+//-------
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
