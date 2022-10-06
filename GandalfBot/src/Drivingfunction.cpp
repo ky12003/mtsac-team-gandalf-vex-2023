@@ -90,6 +90,8 @@ void toggleFlywheel(){
   }
 
   if (spinFlywheel) {
+    flywheelSpinMotors.setVelocity(100, pct);
+
     flywheelSpinMotors.spin(fwd, 100, pct);
   } else {
     flywheelSpinMotors.stop();
