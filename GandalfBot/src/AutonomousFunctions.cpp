@@ -44,6 +44,7 @@ void doIntake(double timeMSec, double velocityPercent) {
 void shootDisks(double timeMSec, double velocityPercent) {
   flywheelSpinMotors.setVelocity(velocityPercent, pct);
 
+  intakeSpinMotors.spinFor(timeMSec, msec);
   flywheelSpinMotors.spinFor(timeMSec, msec);
 }
 

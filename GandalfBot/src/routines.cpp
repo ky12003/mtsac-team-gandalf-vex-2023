@@ -5,30 +5,36 @@ void firstRoutine() {
   /*--------- 
   alignment for the shooter(turning clockwise/last turn is counterclockwise) and drive distance
   ---------*/
-  moveForward(31, 25);
+  // shoot preloaded disks + turn torwards disks
+  shootDisks(2000, 100);
+  turnInPlace(90, 100);
+
+  // move forward torwards the frontmost disk and intake
+  moveForward(27, 25);
+  wait(500, msec);
+  doIntake(3000, 100);
+  // turn torwards vertically left set of disks, move torwards it, then intake
+  turnInPlace(-45, 50);
+  moveForward(23, 15);
   wait(500, msec);
   doIntake(2000, 100);
-  // // turn Clockwise 90 degrees
-  turnInPlace(90, 50);
-  moveForward(26, 15);
-  wait(500, msec);
-  turnInPlace(2000, 100);
-  // // turn counterClockwise 90 degrees 
+  // turn counterClockwise 90 degrees then shoot disk in low goal
   turnInPlace(-90, 50);
-  shootDisks(1000, 100);
-  // // turn Clockwise 180 degrees
-  turnInPlace(180, 50);
-  moveForward(26, 25);
+  shootDisks(2000, 100);
+  // move towards next set of disks, intake
+  moveForward(23, 25);
   wait(500, msec);
   doIntake(2000, 100);
-  moveForward(26, 25);
+  // turn clockwise torwards next set of disks, move torwards the disks, intake
+  turnInPlace(90, 50);
+  moveForward(23, 25);
   wait(500, msec);
   doIntake(2000, 100);
-  moveForward(26, 25);
+  moveForward(23, 25);
   wait(500, msec);
-  // // turn counterClockwise 95 degrees
+  // // turn counterClockwise 95 degrees and shoot
   turnInPlace(-95, 50);
   wait(500, msec);
-  shootDisks(86, 100);
+  shootDisks(2000, 100);
 }
 
