@@ -34,7 +34,7 @@ void arcadedrive(){
 
 // OPTIONS:
 // 0: 100% speed (default, set with X button)
-// 1: 75% speed (set with Y button)
+// 1: 80% speed (set with Y button) 
 // 2: 50% speed (set with A button)
 // 3: 25% speed (set with B button)
 double speedToggleOption() {
@@ -43,8 +43,8 @@ double speedToggleOption() {
     return 1;
   } 
   else if (controller1.ButtonY.pressing()) {
-    // 75% speed
-    return 0.75;
+    // 80% speed
+    return 0.8;
   } 
   else if (controller1.ButtonA.pressing()) {
     // 50% speed
