@@ -17,11 +17,11 @@ MOTORS
 // left/right: motors on the left/right
 // top/bottom: frontmost/backmost motors in motor group
 
-motor BackRightTop(PORT19, ratio18_1, false); 
-motor BackRightBottom(PORT20, ratio18_1, true);
+motor BackRightTop(PORT19, ratio36_1, false); 
+motor BackRightBottom(PORT20, ratio36_1, true);
 
-motor BackLeftTop(PORT11, ratio18_1, true); 
-motor BackLeftBottom(PORT12, ratio18_1, false);
+motor BackLeftTop(PORT11, ratio36_1, true); 
+motor BackLeftBottom(PORT12, ratio36_1, false);
 
 //INTAKE MOTORS
 //(intakeSpinMotorBelt = conveyer belt, intake 1, 2: top, bottom spinners)
