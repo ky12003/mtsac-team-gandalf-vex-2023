@@ -18,13 +18,13 @@ void auto_straight(int speed)
   int leftPosition = left_front.position(degrees); //encoder value for left in rev
   int rightPosition = right_front.position(degrees); //encoder value for right in rev
   
-  left_front.setPosition(0,degrees);
-  right_front.setPosition(0,degrees);
+  left_front.setPosition(0,degrees); //resets encoder values
+  right_front.setPosition(0,degrees); //resets encoder values
 
   while(1)
   {
     leftPosition = left_front.position(degrees); //encoder value for left in rev
-    rightPosition = -right_front.position(degrees); 
+    rightPosition = right_front.position(degrees); 
     printf("%d %d\n",leftPosition,rightPosition);
     error = leftPosition - rightPosition; //calculates error
     total_error = total_error + error; //calculates total error
@@ -34,7 +34,7 @@ void auto_straight(int speed)
     leftSideVel = speed - (error*kP) - (total_error*kI) - (delta_error*kD); //sets right side vel
 
     left_all.spin(fwd,leftSideVel,pct); //spins left side
-    right_all.spin(reverse,rightSideVel,pct); //spins right side
+    right_all.spin(fwd,rightSideVel,pct); //spins right side
     last_error = error; //sets last error
 
     //printf("error:%f      total_error:%f          delta_error:%f\n",error,total_error,delta_error);

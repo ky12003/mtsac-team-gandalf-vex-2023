@@ -133,7 +133,7 @@ void autonomouscontrol(){
   targetValue = 100;
   targetTurnValue = 5;
   */
-  auto_straight(80);
+  auto_straight(20);
 }
 
 //manual control of robot (tank drive)
