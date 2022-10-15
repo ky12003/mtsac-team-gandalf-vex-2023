@@ -27,12 +27,12 @@ void ArcadeDrive()
   } 
   else 
   {
-    left_back.setBrake(brake);
-    left_middle.setBrake(brake);
-    right_back.setBrake(brake);
-    left_front.setBrake(brake);
-    right_front.setBrake(brake);
-    right_middle.setBrake(brake);
+    // left_back.setBrake(brake);
+    // left_middle.setBrake(brake);
+    // right_back.setBrake(brake);
+    // left_front.setBrake(brake);
+    // right_front.setBrake(brake);
+    // right_middle.setBrake(brake);
     left_all.stop();
     right_all.stop();
   }
@@ -54,12 +54,12 @@ void TankDrive()
     left_all.spin(forward,controller1.Axis3.value(), pct); 
     right_all.spin(forward,controller1.Axis2.value() , pct); 
   } else {
-    left_back.setBrake(brake);
-    left_middle.setBrake(brake);
-    right_back.setBrake(brake);
-    left_front.setBrake(brake);
-    right_front.setBrake(brake);
-    right_middle.setBrake(brake);
+    // left_back.setBrake(brake);
+    // left_middle.setBrake(brake);
+    // right_back.setBrake(brake);
+    // left_front.setBrake(brake); 
+    // right_front.setBrake(brake);
+    // right_middle.setBrake(brake);
     left_all.stop();
     right_all.stop();
   }

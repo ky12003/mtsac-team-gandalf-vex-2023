@@ -13,9 +13,9 @@ motor left_front(PORT11,ratio6_1, true);
 motor left_middle(PORT12,ratio6_1,false);
 motor left_back(PORT13,ratio6_1,true);
 
-motor right_front(PORT18,ratio6_1,true);
-motor right_middle(PORT19,ratio6_1,false);
-motor right_back(PORT20,ratio6_1,true);
+motor right_front(PORT18,ratio6_1,false);
+motor right_middle(PORT19,ratio6_1,true);
+motor right_back(PORT20,ratio6_1,false);
 
 
 
