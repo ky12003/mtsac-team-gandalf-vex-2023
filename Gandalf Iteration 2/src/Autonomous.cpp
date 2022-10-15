@@ -4,12 +4,14 @@
 const int PCT_TO_RPM = 6;
 const float rev_to_meters = 2.894;
 
+//pause
 void timeOut(int timeSeconds)
 {
     left_all.setTimeout(timeSeconds, sec);
     right_all.setTimeout(timeSeconds, sec);
 }
 
+//moves forward by input meters at set speed and then times out
 void move_forward(double disMeters, double velPct, int timeout)
 {
     timeOut(timeout);
@@ -20,7 +22,7 @@ void move_forward(double disMeters, double velPct, int timeout)
     timeOut(0);
 }
 
-
+//turns left input degrees at set speed then times out
 void turn_left(double degrees, double velPct, int timeout)
 {
     timeOut(timeout);
