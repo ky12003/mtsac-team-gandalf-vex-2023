@@ -50,6 +50,7 @@ void ArcadeDrive()
 
 void TankDrive()
 {
+  //detects input from two controller joysticks and spins motors
   if(abs(controller1.Axis3.value()) > 5 || abs(controller1.Axis2.value()) > 5) {
     left_all.spin(forward,controller1.Axis3.value(), pct); 
     right_all.spin(forward,controller1.Axis2.value() , pct); 
@@ -60,6 +61,8 @@ void TankDrive()
     // left_front.setBrake(brake); 
     // right_front.setBrake(brake);
     // right_middle.setBrake(brake);
+
+    //stops if no input
     left_all.stop();
     right_all.stop();
   }

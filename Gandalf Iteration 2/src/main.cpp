@@ -133,7 +133,9 @@ void autonomouscontrol(){
   targetValue = 100;
   targetTurnValue = 5;
   */
-  auto_straight(20);
+
+  //set speed(distance) for the robot to go
+  auto_straight(60);
 }
 
 //manual control of robot (tank drive)
