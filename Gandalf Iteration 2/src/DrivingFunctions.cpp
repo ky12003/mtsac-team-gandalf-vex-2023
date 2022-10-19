@@ -63,4 +63,10 @@ void TankDrive()
     left_all.stop();
     right_all.stop();
   }
+  if (controller1.ButtonR1.pressing())
+ {
+   run_intake();
+ } else {
+   intake.stop();
+ }  
 }

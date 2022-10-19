@@ -8,6 +8,6 @@ void run_intake()
 
 void run_intake_reverse()
 {
-  intake.spin(reverse, 200, pct);
+  intake.spin(reverse, 100, pct);
 }
 
