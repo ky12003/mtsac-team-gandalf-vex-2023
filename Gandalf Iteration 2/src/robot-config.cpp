@@ -27,6 +27,8 @@ motor intake(PORT14,ratio18_1,true);
 
 inertial inertial_sensor(PORT10);
 
+digital_out feeder = digital_out(Brain.ThreeWirePort.A);
+
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  *

@@ -3,6 +3,7 @@
 #include "vex.h"
 #include "launcher.h"
 #include "robot-config.h"
+#include "Pneumatics.h"
 
 void ArcadeDrive()
 {
@@ -20,7 +21,7 @@ void ArcadeDrive()
    intake.stop();
  }  
 
- if(abs(controller1.Axis3.value()) > 5 || abs(controller1.Axis1.value()) > 5)
+ if(abs(controller1.Axis3.value()) > 8 || abs(controller1.Axis1.value()) > 8)
  {
     left_all.spin(forward, (controller1.Axis3.value() + controller1.Axis1.value() ), pct);
     right_all.spin(forward, (controller1.Axis3.value() - controller1.Axis1.value() ), pct);
@@ -74,4 +75,8 @@ void TankDrive()
   run_intake_reverse();
   else intake.stop();
   
+  if(controller1.ButtonL2.pressing())
+  extend_feeder();
+  else if(controller1.ButtonL2.pressing()==false)
+  retract_feeder();
 }

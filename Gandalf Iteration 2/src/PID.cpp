@@ -45,5 +45,4 @@ void auto_straight(int speed)
   }
 
 
-
 }

@@ -25,7 +25,19 @@ void RoutineOne()
   //move_forward_alt_test();
   //auto_straight(80);
   //inertial_turn(1080);// degrees + is right
-  move_forward(3, 300, 2); //aprox ~18 inches
+
+  
+  //move_forward_PID(30, 2); //speed then feet
+  inertial_turn (-90);      //turn + is turn right - is turn left
+  // move_forward_PID(30, 2); //speed then feet
+  // inertial_turn (90); 
+  // move_forward_PID(30, 2); //speed then feet
+  // inertial_turn (90); 
+  // move_forward_PID(30, 2); //speed then feet
+  // inertial_turn (90); 
+
+  //move_forward_PID(20, 3);//speed in pct then distance 1 disMeter is actually ~1 foot
+  //inertial_turn (1080);
 }
 
 void RoutineTwo()

@@ -25,6 +25,7 @@ extern motor fly_wheel_one;
 extern motor fly_wheel_two;
 
 extern inertial inertial_sensor;
+extern digital_out feeder;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

@@ -18,4 +18,6 @@ void move_forward_alt_test();
 
 void inertial_turn(double degrees);
 
+void move_forward_PID(int speed, double disMeters);
+
 #endif
