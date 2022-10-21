@@ -13,10 +13,10 @@ void fly_wheel_two_forward()
 
 void fly_wheel_one_reverse()
 {
-  fly_wheel_one.spin(reverse, 450, pct);
+  fly_wheel_one.spin(reverse, 100, pct);
 }
 
 void fly_wheel_two_reverse()
 {
-  fly_wheel_two.spin(reverse, 450, pct);
+  fly_wheel_two.spin(reverse, 100, pct);
 }

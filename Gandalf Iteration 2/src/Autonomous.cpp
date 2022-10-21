@@ -13,8 +13,6 @@ void timeOut(int timeSeconds)
 void move_forward(double disMeters, double velPct, int timeout)
 {
     timeOut(timeout);
-    disMeters = disMeters * rev_to_meters;
-    velPct = velPct * PCT_TO_RPM;
     right_all.spinFor(fwd, double(disMeters), rev, double(velPct), rpm, false);
     left_all.spinFor(fwd, double(disMeters), rev, double(velPct), rpm, true);
     timeOut(0);
@@ -31,7 +29,37 @@ void turn_left(double degrees, double velPct, int timeout)
     timeOut(0);
 }
 
-
+void inertial_turn(double degrees)
+{
+  double target_rotation = (inertial_sensor.rotation(deg)+degrees);
+  while(1)
+  {
+    double current_rotation = inertial_sensor.rotation(deg);
+    double error = target_rotation - current_rotation;
+    if (error>90)
+    {
+    left_all.spin(fwd,30,pct);
+    right_all.spin(reverse,30,pct);
+    } else if (error<-90){
+    left_all.spin(reverse,30,pct);
+    right_all.spin(fwd,30,pct);
+    }else if (error>30){
+    left_all.spin(fwd,error/2,pct);
+    right_all.spin(reverse,error/2,pct);
+    }else if (error<-30){
+    left_all.spin(reverse,error/2,pct);
+    right_all.spin(fwd,error/2,pct);
+    }else{
+    left_all.spin(fwd,error,pct);
+    right_all.spin(reverse,error,pct);
+    }
+    if (error<1){
+      vex::task::sleep( 200 );
+      if (error<1)
+      break;
+    }
+  }
+}
 
 
 

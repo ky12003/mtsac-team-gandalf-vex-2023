@@ -21,9 +21,11 @@ calibrated code
 //Routine 1 Box routine
 void RoutineOne()
 {
-  while(1)
+  //while(1)
   //move_forward_alt_test();
-  auto_straight(80);
+  //auto_straight(80);
+  //inertial_turn(1080);// degrees + is right
+  move_forward(3, 300, 2); //aprox ~18 inches
 }
 
 void RoutineTwo()

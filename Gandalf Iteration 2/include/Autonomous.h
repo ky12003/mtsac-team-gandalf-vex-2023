@@ -16,5 +16,6 @@ void move_forward_alt();
 
 void move_forward_alt_test();
 
+void inertial_turn(double degrees);
 
 #endif

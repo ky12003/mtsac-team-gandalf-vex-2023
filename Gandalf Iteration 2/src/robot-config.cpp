@@ -17,17 +17,15 @@ motor right_front(PORT18,ratio6_1,false);
 motor right_middle(PORT19,ratio6_1,true);
 motor right_back(PORT20,ratio6_1,false);
 
-
-
 motor_group left_all(left_front,left_middle,left_back);
 motor_group right_all(right_front,right_middle,right_back);
 
 motor fly_wheel_one(PORT7,ratio18_1,true);
 motor fly_wheel_two(PORT8,ratio18_1,false);
 
-motor intake(PORT13,ratio36_1,true);
+motor intake(PORT14,ratio18_1,true);
 
-
+inertial inertial_sensor(PORT10);
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
