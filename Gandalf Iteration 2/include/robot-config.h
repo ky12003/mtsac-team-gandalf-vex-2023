@@ -24,8 +24,11 @@ extern motor intake;
 extern motor fly_wheel_one;
 extern motor fly_wheel_two;
 
+extern motor roller;
+
 extern inertial inertial_sensor;
 extern digital_out feeder;
+extern digital_out expansion;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

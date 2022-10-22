@@ -4,6 +4,16 @@
 #include "launcher.h"
 #include "robot-config.h"
 #include "Pneumatics.h"
+#include "Roller.h"
+////////////////////////////////////Buttons List
+//Fly-Wheel reverse:      L1         
+//Feeder:                 L2
+//Intake forward:         R1
+//Intake reverse:         R2
+//Expansion:              A
+//Roller:                 X
+//Roller reverse:         Y
+
 
 void ArcadeDrive()
 {
@@ -38,14 +48,6 @@ void ArcadeDrive()
     right_all.stop();
   }
  
- if(controller1.ButtonL1.pressing())
- {
-   fly_wheel_one_reverse();
-   fly_wheel_two_reverse();
- }else{
-   fly_wheel_one_forward();
-   fly_wheel_two_forward();
- }
 
 }
 
@@ -64,7 +66,23 @@ void TankDrive()
     left_all.stop();
     right_all.stop();
   }
-  /////////////////////
+   if(controller1.ButtonL1.pressing())
+ {
+   fly_wheel_one_reverse();
+   fly_wheel_two_reverse();
+ }else{
+   fly_wheel_one_forward();
+   fly_wheel_two_forward();
+ }
+  ///////////////////////////////////////////////////////////////////////////////
+  
+
+
+
+
+
+
+  ///////////////////////////////////////////////////////////////////////////////
   
 
 
@@ -74,9 +92,21 @@ void TankDrive()
   else if (controller1.ButtonR2.pressing())
   run_intake_reverse();
   else intake.stop();
-  
+
+
+  if(controller1.ButtonX.pressing())
+  run_roller();
+  else if ((controller1.ButtonY.pressing()))
+  run_roller_reverse();
+
+
   if(controller1.ButtonL2.pressing())
   extend_feeder();
   else if(controller1.ButtonL2.pressing()==false)
   retract_feeder();
+
+  if(controller1.ButtonA.pressing())
+  extend_expansion();
+  else if(controller1.ButtonA.pressing()==false)
+  retract_expansion();
 }

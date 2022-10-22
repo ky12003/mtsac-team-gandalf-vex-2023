@@ -3,12 +3,12 @@
 
 void fly_wheel_one_forward()
 {
-  fly_wheel_one.spin(fwd, 450, pct);
+  fly_wheel_one.spin(fwd, 100, pct);
 }
 
 void fly_wheel_two_forward()
 {
-  fly_wheel_two.spin(fwd, 450, pct);
+  fly_wheel_two.spin(fwd, 100, pct);
 }
 
 void fly_wheel_one_reverse()

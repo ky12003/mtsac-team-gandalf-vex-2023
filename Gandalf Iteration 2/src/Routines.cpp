@@ -21,14 +21,9 @@ calibrated code
 //Routine 1 Box routine
 void RoutineOne()
 {
-  //while(1)
-  //move_forward_alt_test();
-  //auto_straight(80);
-  //inertial_turn(1080);// degrees + is right
-
-  
+  //roller.spinFor(fwd, 0.5, rev);
   //move_forward_PID(30, 2); //speed then feet
-  inertial_turn (-90);      //turn + is turn right - is turn left
+  //inertial_turn (-90);      //turn + is turn right - is turn left
   // move_forward_PID(30, 2); //speed then feet
   // inertial_turn (90); 
   // move_forward_PID(30, 2); //speed then feet
@@ -47,5 +42,4 @@ void RoutineTwo()
   move_forward(0.67, 50, 2);
   turn_left(-120,50,2); //turn right 90
   move_forward(0.12, 50, 2);
-
 }
