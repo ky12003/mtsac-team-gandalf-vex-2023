@@ -3,6 +3,6 @@
 
 void run_intake();
 void run_intake_reverse();
-
+void intake_toggle();
 
 #endif

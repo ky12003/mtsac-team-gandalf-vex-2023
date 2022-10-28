@@ -17,6 +17,7 @@
 #include "Autonomous.h"
 #include "robot-config.h"
 #include "PID.h"
+#include "Roller.h"
 
 using namespace vex;
 competition Competition;
@@ -142,6 +143,8 @@ void usercontrol(){
     while (1){
       //ArcadeDrive();
       TankDrive();
+      intake_toggle();
+
     }
    }
 

@@ -51,7 +51,10 @@ motor_group right_all(right_front,right_middle,right_back);
 motor fly_wheel_one(PORT7,ratio18_1,true);
 motor fly_wheel_two(PORT8,ratio18_1,false);
 
-motor intake(PORT14,ratio18_1,true);
+motor intake_1(PORT14,ratio18_1,true);
+motor intake_2(PORT17, ratio18_1, false);
+
+motor_group intake(intake_1, intake_2);
 
 motor roller(PORT15,ratio18_1,true);//need to check motor setting
 
@@ -60,6 +63,7 @@ inertial inertial_sensor(PORT10);
 digital_out feeder = digital_out(Brain.ThreeWirePort.A);
 digital_out expansion = digital_out(Brain.ThreeWirePort.B);
 
+optical optical_sensor(PORT16);
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  *

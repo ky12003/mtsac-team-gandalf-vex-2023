@@ -17,3 +17,21 @@ void retract_expansion()
 {
   expansion.set(false);
 }
+void expansion_toggle()
+{
+  bool expansion_toggle = false;
+  bool expansion_stopper = false;
+  if (controller1.ButtonA.pressing())
+    if (!expansion_stopper)
+    {
+      expansion_toggle = !expansion_toggle;
+      expansion_stopper = true;
+    } else {
+      expansion_stopper = false;
+    }
+
+
+
+
+
+}
