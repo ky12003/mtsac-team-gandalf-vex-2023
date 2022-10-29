@@ -88,11 +88,10 @@ void TankDrive()
 
 
   
-  /*if(controller1.ButtonR1.pressing())
-  run_intake();
-  else if (controller1.ButtonR2.pressing())
-  run_intake_reverse();
-  else intake.stop();*/
+  
+  if (controller1.ButtonL2.pressing())
+  run_roller_reverse();
+  else roller.stop();
 
 
   // if(controller1.ButtonL1.pressing())

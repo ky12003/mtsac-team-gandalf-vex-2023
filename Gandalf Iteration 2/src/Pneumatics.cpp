@@ -21,7 +21,7 @@ void expansion_toggle()
 {
   bool expansion_toggle = false;
   bool expansion_stopper = false;
-  if (controller1.ButtonA.pressing())
+  if (controller1.ButtonA.pressing()){
     if (!expansion_stopper)
     {
       expansion_toggle = !expansion_toggle;
@@ -31,7 +31,10 @@ void expansion_toggle()
     }
 
 
-
+  } if (expansion_toggle)
+      extend_expansion();
+    else
+      retract_expansion();
 
 
 }

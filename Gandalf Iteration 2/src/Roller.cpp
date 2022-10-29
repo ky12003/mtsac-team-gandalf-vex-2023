@@ -15,15 +15,15 @@ void run_roller() {
 
   //FOR ROLLING TO RED
   
-  // while (true) {
-  //   if (optical_sensor.isNearObject()){
-  //     if (optical_sensor.hue() >= 200 && optical_sensor.hue() <= 240){
-  //       roller.spin(forward, 50, pct);
-  //     } else {
-  //       roller.stop(brake);
-  //     }
-  //   }
-  // }
+   while (true) {
+     if (optical_sensor.isNearObject()){
+      if (optical_sensor.hue() >= 200 && optical_sensor.hue() <= 240){
+        roller.spin(forward, 50, pct);
+      } else {
+        roller.stop(brake);
+      }
+    }
+  }
 
   //FOR ROLLING TO BLUE
 
