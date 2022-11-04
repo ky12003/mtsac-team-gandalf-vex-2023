@@ -21,15 +21,54 @@ calibrated code
 //Routine 1 Box routine
 void RoutineOne()
 {
-  //roller.spinFor(fwd, 0.5, rev);
-  //move_forward_PID(30, 2); //speed then feet
-  //inertial_turn (-90);      //turn + is turn right - is turn left
-  // move_forward_PID(30, 2); //speed then feet
+  int target_rotation = 0;
+  int current_rotation = 0;
+
+  target_rotation = (inertial_sensor.rotation(deg));
+  move_forward_PID(30, 1); //speed then feet
+  vex::task::sleep(250);
+  current_rotation = (inertial_sensor.rotation(deg));
+  inertial_turn (current_rotation - target_rotation);
+  vex::task::sleep(250);
+  inertial_turn (90);
+
+  target_rotation = (inertial_sensor.rotation(deg));
+  move_forward_PID(30, 1); //speed then feet
+  vex::task::sleep(250);
+  current_rotation = (inertial_sensor.rotation(deg));
+  inertial_turn (current_rotation - target_rotation);
+  vex::task::sleep(250);
+  inertial_turn (90);
+  
+  target_rotation = (inertial_sensor.rotation(deg));
+  move_forward_PID(30, 1); //speed then feet
+  vex::task::sleep(250);
+  current_rotation = (inertial_sensor.rotation(deg));
+  inertial_turn (current_rotation - target_rotation);
+  vex::task::sleep(250);
+  inertial_turn (90);
+  
+  target_rotation = (inertial_sensor.rotation(deg));
+  move_forward_PID(30, 1); //speed then feet
+  vex::task::sleep(250);
+  current_rotation = (inertial_sensor.rotation(deg));
+  inertial_turn (current_rotation - target_rotation);
+  vex::task::sleep(250);
+  inertial_turn (90);
+  
+
+
+  // move_forward_PID(30, 1);
   // inertial_turn (90); 
-  // move_forward_PID(30, 2); //speed then feet
+  // move_forward_PID(30, 1); //speed then feet
   // inertial_turn (90); 
-  // move_forward_PID(30, 2); //speed then feet
+  // move_forward_PID(30, 1); //speed then feet
   // inertial_turn (90); 
+
+
+  // move_forward_PID(30, 1); //speed then feet
+  // inertial_turn (90); 
+  //inertial_turn(-360);
 
   //move_forward_PID(20, 3);//speed in pct then distance 1 disMeter is actually ~1 foot
   //inertial_turn (1080);

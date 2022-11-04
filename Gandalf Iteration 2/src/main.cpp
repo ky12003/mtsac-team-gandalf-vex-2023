@@ -18,6 +18,8 @@
 #include "robot-config.h"
 #include "PID.h"
 #include "Roller.h"
+#include "Launcher.h"
+#include "pneumatics.h"
 
 using namespace vex;
 competition Competition;
@@ -144,7 +146,8 @@ void usercontrol(){
       //ArcadeDrive();
       TankDrive();
       intake_toggle();
-      
+      fly_wheel_toggle();
+      expansion_toggle();
       //run_roller();
 
     }

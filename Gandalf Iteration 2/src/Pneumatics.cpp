@@ -3,11 +3,11 @@
 
 void extend_feeder()
 {
-  feeder.set(true);
+  feeder.set(false);
 }
 void retract_feeder()
 {
-  feeder.set(false);
+  feeder.set(true);
 }
 void extend_expansion()
 {
@@ -35,6 +35,4 @@ void expansion_toggle()
       extend_expansion();
     else
       retract_expansion();
-
-
 }

@@ -6,7 +6,7 @@
 #include "Pneumatics.h"
 #include "Roller.h"
 ////////////////////////////////////Buttons List
-//Fly-Wheel reverse:      X         
+//Fly-Wheel :             X         
 //Feeder:                 Y
 //Intake forward:         R1
 //Intake reverse:         R2
@@ -103,13 +103,9 @@ void TankDrive()
 
 
   if(controller1.ButtonY.pressing())
-  extend_feeder();
+  feeder.set(false);
   else if(controller1.ButtonY.pressing()==false)
-  retract_feeder();
-
-  if(controller1.ButtonA.pressing())
-  extend_expansion();
-  else if(controller1.ButtonA.pressing()==false)
-  retract_expansion();
+  feeder.set(true);
+  
 }
 

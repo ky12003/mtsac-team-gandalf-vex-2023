@@ -1,14 +1,14 @@
 #include "vex.h"
 using namespace vex;
-//PORT1:
-//PORT2:
-//PORT3:
-//PORT4:
-//PORT5:
-//PORT6:
-//PORT7:  fly_wheel_one
-//PORT8:  fly_wheel_two
-//PORT9:
+//PORT01:
+//PORT02:
+//PORT03:
+//PORT04:
+//PORT05: 
+//PORT06:
+//PORT07: fly_wheel_one
+//PORT08: fly_wheel_two
+//PORT09:
 //PORT10: inertial sensor
 //PORT11: left_front
 //PORT12: left_middle
@@ -48,15 +48,15 @@ motor right_back(PORT20,ratio6_1,false);
 motor_group left_all(left_front,left_middle,left_back);
 motor_group right_all(right_front,right_middle,right_back);
 
-motor fly_wheel_one(PORT7,ratio18_1,true);
-motor fly_wheel_two(PORT8,ratio18_1,false);
+motor fly_wheel_one(PORT7,ratio6_1,false);
+motor fly_wheel_two(PORT8,ratio6_1,true);
 
 motor intake_1(PORT14,ratio18_1,true);
 motor intake_2(PORT17, ratio18_1, false);
 
 motor_group intake(intake_1, intake_2);
 
-motor roller(PORT15,ratio18_1,true);//need to check motor setting
+motor roller(PORT15,ratio36_1,true);
 
 inertial inertial_sensor(PORT10);
 
