@@ -3,6 +3,7 @@
 #include "Autonomous.h"
 #include "intake.h"
 #include "PID.h"
+#include "Roller.h"
 #
 /**********************************************************
 calibrated code
@@ -21,41 +22,13 @@ calibrated code
 //Routine 1 Box routine
 void RoutineOne()
 {
-  int target_rotation = 0;
-  int current_rotation = 0;
-
-  target_rotation = (inertial_sensor.rotation(deg));
-  move_forward_PID(30, 1); //speed then feet
-  vex::task::sleep(250);
-  current_rotation = (inertial_sensor.rotation(deg));
-  inertial_turn (current_rotation - target_rotation);
-  vex::task::sleep(250);
-  inertial_turn (90);
-
-  target_rotation = (inertial_sensor.rotation(deg));
-  move_forward_PID(30, 1); //speed then feet
-  vex::task::sleep(250);
-  current_rotation = (inertial_sensor.rotation(deg));
-  inertial_turn (current_rotation - target_rotation);
-  vex::task::sleep(250);
-  inertial_turn (90);
-  
-  target_rotation = (inertial_sensor.rotation(deg));
-  move_forward_PID(30, 1); //speed then feet
-  vex::task::sleep(250);
-  current_rotation = (inertial_sensor.rotation(deg));
-  inertial_turn (current_rotation - target_rotation);
-  vex::task::sleep(250);
-  inertial_turn (90);
-  
-  target_rotation = (inertial_sensor.rotation(deg));
-  move_forward_PID(30, 1); //speed then feet
-  vex::task::sleep(250);
-  current_rotation = (inertial_sensor.rotation(deg));
-  inertial_turn (current_rotation - target_rotation);
-  vex::task::sleep(250);
-  inertial_turn (90);
-  
+  run_roller_blue(); 
+  move_back_PID(30,0.5);
+  inertial_turn (180);
+  move_forward_PID(30,1);
+  inertial_turn (-90);
+  move_forward_PID(30,1.5);
+  run_roller_blue(); 
 
 
   // move_forward_PID(30, 1);

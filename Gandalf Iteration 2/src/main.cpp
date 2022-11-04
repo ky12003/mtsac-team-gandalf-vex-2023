@@ -55,87 +55,10 @@ bool resetEncoders = false;
 //boolean used to turn on/off PID during usercontrol/autonmonous
 bool enableDrivingPID = true;
 
-int drivingPID(){
-  while(enableDrivingPID){
-
-    if (resetEncoders) {
-      resetEncoders = false;
-      left_all.setPosition(0, rev);
-      right_all.setPosition(0, rev);
-    }
-
-    //position of the two front motors
-    int leftFrontPosition = left_front.position(rev);
-    int rightFrontPosition = right_front.position(rev);
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////  
-    //                              Lateral Movement PID                                           //
-    ///////////////////////////////////////////////////////////////////////////////////////////////// 
-
-    //average position of the two front motors
-    int averagePosition = (leftFrontPosition + rightFrontPosition)/2;
-
-    //
-    error = averagePosition - targetValue;
-
-    //derivative
-    derivative = error - previousError;
-
-    //integral
-    totalError += error;
-
-    double lateralMotorPower = (error * kP) + (derivative * kD); // + (totalError * kD)
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////  
-    //                              Directional Movement PID                                       //
-    ///////////////////////////////////////////////////////////////////////////////////////////////// 
-
-    //average position of the two front motors
-    int turnDifference = (leftFrontPosition - rightFrontPosition)/2;
-
-    //
-    turnError = turnDifference - targetValue;
-
-    //derivative
-    turnDerivative = turnError - turnPreviousError;
-
-    //integral
-    turnTotalError += turnError;
-
-    double turnMotorPower = (error * turnKP) + (derivative * turnKD); // + (totalError * turnKI)
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-
-    left_all.spin(forward, lateralMotorPower + turnMotorPower, pct); 
-    right_all.spin(forward, lateralMotorPower + turnMotorPower, pct); 
-
-
-    previousError = error;
-    turnPreviousError = turnError;
-    vex::task::sleep(20);
-
-  }
-  return 1;
-}
 
 
 //autonomous routines go here
 void autonomouscontrol(){
-  /*
-  enableDrivingPID = true;
-  vex::task pathCorrection(drivingPID);
-
-  resetEncoders = true;
-  targetValue = 100;
-  targetTurnValue = 5;
-
-  vex::task::sleep(1000);
-
-  resetEncoders = true;
-  targetValue = 100;
-  targetTurnValue = 5;
-  */
   RoutineOne();
 }
 
