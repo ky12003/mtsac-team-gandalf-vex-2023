@@ -51,8 +51,8 @@ motor_group right_all(right_front,right_middle,right_back);
 motor fly_wheel_one(PORT7,ratio6_1,false);
 motor fly_wheel_two(PORT8,ratio6_1,true);
 
-motor intake_1(PORT14,ratio18_1,true);
-motor intake_2(PORT17, ratio18_1, false);
+motor intake_1(PORT14,ratio6_1,true);
+motor intake_2(PORT17, ratio6_1, false);
 
 motor_group intake(intake_1, intake_2);
 

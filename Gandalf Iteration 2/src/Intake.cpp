@@ -3,12 +3,12 @@
 
 void run_intake()
 {
-  intake.spin(fwd, 80, pct);
+  intake.spin(fwd, 100, pct);
 }
 
 void run_intake_reverse()
 {
-  intake.spin(reverse, 80, pct);
+  intake.spin(reverse, 100, pct);
 }
 
 int intake_state = 0;

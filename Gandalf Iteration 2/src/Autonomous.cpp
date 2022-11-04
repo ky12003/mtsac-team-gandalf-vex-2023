@@ -85,7 +85,7 @@ void inertial_turn(double degrees)
       if ((error<0.1)&&(error>-0.1))
       {
       end_function = 1;
-      } else int x = 0;
+      } 
     }
   if(end_function == 1)
   {
@@ -162,7 +162,8 @@ void move_forward_PID(int speed, double disMeters) //speed in pct distance in fe
     if(end_function == 1)
     {
       printf("break out of forward");
-     break;
+      break;
+      end_function = 0; 
     }
     
   }
