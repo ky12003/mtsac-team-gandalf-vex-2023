@@ -3,6 +3,7 @@
 #include "Autonomous.h"
 #include "intake.h"
 #include "PID.h"
+#include "Roller.h"
 #
 /**********************************************************
 calibrated code
@@ -21,9 +22,29 @@ calibrated code
 //Routine 1 Box routine
 void RoutineOne()
 {
-  while(1)
-  //move_forward_alt_test();
-  auto_straight(80);
+  run_roller_red(); 
+  move_back_PID(30,0.5);
+  inertial_turn (180);
+  move_forward_PID(30,1);
+  inertial_turn (-90);
+  move_forward_PID(30,1.5);
+  run_roller_red(); 
+
+
+  // move_forward_PID(30, 1);
+  // inertial_turn (90); 
+  // move_forward_PID(30, 1); //speed then feet
+  // inertial_turn (90); 
+  // move_forward_PID(30, 1); //speed then feet
+  // inertial_turn (90); 
+
+
+  // move_forward_PID(30, 1); //speed then feet
+  // inertial_turn (90); 
+  //inertial_turn(-360);
+
+  //move_forward_PID(20, 3);//speed in pct then distance 1 disMeter is actually ~1 foot
+  //inertial_turn (1080);
 }
 
 void RoutineTwo()
@@ -33,5 +54,4 @@ void RoutineTwo()
   move_forward(0.67, 50, 2);
   turn_left(-120,50,2); //turn right 90
   move_forward(0.12, 50, 2);
-
 }

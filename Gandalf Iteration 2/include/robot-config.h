@@ -19,10 +19,21 @@ extern motor right_back;
 extern motor_group left_all;
 extern motor_group right_all;
 
-extern motor intake;
+extern motor_group intake;
+extern motor intake_1;
+extern motor intake_2;
+
 
 extern motor fly_wheel_one;
 extern motor fly_wheel_two;
+
+extern motor roller;
+
+extern inertial inertial_sensor;
+extern digital_out feeder;
+extern digital_out expansion;
+
+extern optical optical_sensor;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

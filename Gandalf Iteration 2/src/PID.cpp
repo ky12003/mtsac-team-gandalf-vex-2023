@@ -3,7 +3,7 @@
 
 void auto_straight(int speed)
 {
-  const float kP = 0.15; //make changes
+  const float kP = 0.2;
   const float kI = 0;
   const float kD = 0;
   int error = 0;; //proportional / current
@@ -43,7 +43,6 @@ void auto_straight(int speed)
     vex::task::sleep(20);
     
   }
-
 
 
 }
