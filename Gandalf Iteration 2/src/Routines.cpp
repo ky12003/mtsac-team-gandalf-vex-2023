@@ -22,25 +22,24 @@ calibrated code
 //Routine 1 Box routine
 void RoutineOne()
 {
-  run_roller_blue(); 
-  move_back_PID(30,0.5);
-  inertial_turn (180);
-  move_forward_PID(30,1);
-  inertial_turn (-90);
-  move_forward_PID(30,1.5);
-  run_roller_blue(); 
+  // run_roller_blue(); 
+  // move_back_PID(30,0.5);
+  // inertial_turn (180);
+  // move_forward_PID(30,1);
+  // inertial_turn (-90);
+  // move_forward_PID(30,1.5);
+  // run_roller_blue(); 
 
 
-  // move_forward_PID(30, 1);
-  // inertial_turn (90); 
-  // move_forward_PID(30, 1); //speed then feet
-  // inertial_turn (90); 
-  // move_forward_PID(30, 1); //speed then feet
-  // inertial_turn (90); 
-
-
-  // move_forward_PID(30, 1); //speed then feet
-  // inertial_turn (90); 
+  
+  move_forward_PID(30, 1); //speed then feet
+  inertial_turn (90); 
+  move_forward_PID(30, 1); //speed then feet
+  inertial_turn (90); 
+  move_forward_PID(30, 1); //speed then feet
+  inertial_turn (90); 
+  move_forward_PID(30, 1); //speed then feet
+  inertial_turn (90); 
   //inertial_turn(-360);
 
   //move_forward_PID(20, 3);//speed in pct then distance 1 disMeter is actually ~1 foot

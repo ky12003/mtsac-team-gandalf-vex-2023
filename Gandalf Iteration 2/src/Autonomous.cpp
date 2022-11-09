@@ -46,17 +46,17 @@ void inertial_turn(double degrees)
     //printf("current rotation: %f   target rotation: %f    error: %f\n",current_rotation,target_rotation,error);
     if (error>90)
     {
-    left_all.spin(fwd,45,pct);
-    right_all.spin(reverse,45,pct);
+    left_all.spin(fwd,20,pct);
+    right_all.spin(reverse,20,pct);
     } else if (error<-90){
-     left_all.spin(reverse,45,pct);
-     right_all.spin(fwd,45,pct);
+     left_all.spin(reverse,20,pct);
+     right_all.spin(fwd,20,pct);
     }else if (error>30){
-    left_all.spin(fwd,error/3,pct);
-    right_all.spin(reverse,error/3,pct);
+    left_all.spin(fwd,error/4,pct);
+    right_all.spin(reverse,error/4,pct);
     }else if (error<-30){
-    left_all.spin(reverse,fabs(error)/3,pct);
-    right_all.spin(fwd,fabs(error)/3,pct);
+    left_all.spin(reverse,fabs(error)/4,pct);
+    right_all.spin(fwd,fabs(error)/4,pct);
     }else if (error>5){
     left_all.spin(fwd,error/2,pct);
     right_all.spin(reverse,error/2,pct);
@@ -96,11 +96,11 @@ void inertial_turn(double degrees)
 }
 }
 
-
 void move_forward_PID(int speed, double disMeters) //speed in pct distance in feet
 {
   inertial_sensor.resetRotation();
-  int end_function = 0;
+
+  //double target_rotation = (inertial_sensor.rotation(deg));
   const float kP = 0.05;
   const float kD = 0.3;
   int error = 0; //proportional / current
@@ -115,14 +115,8 @@ void move_forward_PID(int speed, double disMeters) //speed in pct distance in fe
   int leftPosition = left_front.position(degrees); //encoder value for left in rev
   int rightPosition = right_front.position(degrees); //encoder value for right in rev   
   
-  while(1)
+  while((leftPosition < (disMeters*360*2.15))&&(rightPosition<(disMeters*360*2.15)))
   {
-    if (1==1)
-  {
-  float current = (inertial_sensor.rotation(deg));
-  printf("rotation: %f\n",current);
-  }
-
     leftPosition = left_front.position(degrees); //encoder value for left in rev
     rightPosition = right_front.position(degrees); 
     //printf("LeftPosition:%d  RightPosition:%d\n",leftPosition,rightPosition);
@@ -131,10 +125,6 @@ void move_forward_PID(int speed, double disMeters) //speed in pct distance in fe
     vex::task::sleep( 20 );
     last_error = error;
     
-    
-
-
-
 
     //printf("error: %i    left position: %i    right position %i    last_error: %i   derivative: %i\n",error,leftPosition,rightPosition,last_error,derivative);
     rightSideVel = speed + (error*kP) + (derivative*kD); //sets right side vel
@@ -144,10 +134,11 @@ void move_forward_PID(int speed, double disMeters) //speed in pct distance in fe
     left_all.spin(fwd,leftSideVel,pct); //spins left side
     
 
-    //printf("move_forward PID: ERROR:%i      End_of_function:%d\n",error,end_function);
-    if ((leftPosition > (disMeters*360*2.15))&&(rightPosition>(disMeters*360*2.15)))
-    {
-      left_back.setBrake(brake);
+    //printf("move_forward PID: ERROR:%i      End_of_function:%d\n",error,end_function)
+    
+    
+  }
+  left_back.setBrake(brake);
       left_middle.setBrake(brake);
       right_back.setBrake(brake);
       left_front.setBrake(brake);
@@ -155,25 +146,16 @@ void move_forward_PID(int speed, double disMeters) //speed in pct distance in fe
       right_middle.setBrake(brake);
       left_all.stop();
       right_all.stop();
-      vex::task::sleep( 20 );
-      end_function = 1;
-    }
-    
-    if(end_function == 1)
-    {
-      printf("break out of forward");
-      break;
-      end_function = 0; 
-    }
-    
-  }
-
+      vex::task::sleep( 500 );
+  double final_rotation = (inertial_sensor.rotation(deg));
+  inertial_turn (-final_rotation);
 }
 
 void move_back_PID(int speed, double disMeters) //speed in pct distance in feet
 {
   inertial_sensor.resetRotation();
-  int end_function = 0;
+
+  //double target_rotation = (inertial_sensor.rotation(deg));
   const float kP = 0.05;
   const float kD = 0.3;
   int error = 0; //proportional / current
@@ -185,17 +167,17 @@ void move_back_PID(int speed, double disMeters) //speed in pct distance in feet
   left_front.setPosition(0,degrees); //resets encoder values
   right_front.setPosition(0,degrees); //resets encoder values
 
-  int leftPosition = left_front.position(degrees); //encoder value for left in rev
+  int leftPosition =left_front.position(degrees); //encoder value for left in rev
   int rightPosition = right_front.position(degrees); //encoder value for right in rev   
   
-  while(1)
+  while((abs(leftPosition) < (disMeters*360*2.15))&&(abs(rightPosition)<(disMeters*360*2.15)))
   {
-    if (1==1)
-  {
-  float current = (inertial_sensor.rotation(deg));
-  printf("rotation: %f\n",current);
-  }
-
+    printf("leftPosition:");
+    printf("%i",leftPosition);
+    printf("  ");
+    printf("rightPosition:");
+    printf("%i",rightPosition);
+    printf("\n");
     leftPosition = left_front.position(degrees); //encoder value for left in rev
     rightPosition = right_front.position(degrees); 
     //printf("LeftPosition:%d  RightPosition:%d\n",leftPosition,rightPosition);
@@ -204,23 +186,20 @@ void move_back_PID(int speed, double disMeters) //speed in pct distance in feet
     vex::task::sleep( 20 );
     last_error = error;
     
-    
-
-
-
 
     //printf("error: %i    left position: %i    right position %i    last_error: %i   derivative: %i\n",error,leftPosition,rightPosition,last_error,derivative);
-    rightSideVel = speed + (error*kP) + (derivative*kD); //sets right side vel
-    leftSideVel = speed - (error*kP) - (derivative*kD);//sets right side vel
+    rightSideVel = speed - (error*kP) - (derivative*kD); //sets right side vel
+    leftSideVel = speed + (error*kP) + (derivative*kD);//sets right side vel
 
     right_all.spin(reverse,rightSideVel,pct); //spins right side
     left_all.spin(reverse,leftSideVel,pct); //spins left side
     
 
-    //printf("move_forward PID: ERROR:%i      End_of_function:%d\n",error,end_function);
-    if ((leftPosition > (disMeters*360*2.15))&&(rightPosition>(disMeters*360*2.15)))
-    {
-      left_back.setBrake(brake);
+    //printf("move_forward PID: ERROR:%i      End_of_function:%d\n",error,end_function)
+    
+    
+  }
+  left_back.setBrake(brake);
       left_middle.setBrake(brake);
       right_back.setBrake(brake);
       left_front.setBrake(brake);
@@ -228,19 +207,7 @@ void move_back_PID(int speed, double disMeters) //speed in pct distance in feet
       right_middle.setBrake(brake);
       left_all.stop();
       right_all.stop();
-      vex::task::sleep( 20 );
-      end_function = 1;
-    }
-    
-    if(end_function == 1)
-    {
-      printf("break out of forward");
-      break;
-      end_function = 0; 
-    }
-    
-  }
-
+      vex::task::sleep( 500 );
+  double final_rotation = (inertial_sensor.rotation(deg));
+  inertial_turn (-final_rotation);
 }
-
-

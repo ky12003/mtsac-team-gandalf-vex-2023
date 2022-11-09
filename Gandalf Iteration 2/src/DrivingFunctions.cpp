@@ -53,7 +53,9 @@ void ArcadeDrive()
 
 void TankDrive()
 {
- 
+ float current = (inertial_sensor.rotation(deg));
+  printf("rotation: %f\n",current);
+
   if(abs(controller1.Axis3.value()) > 5 || abs(controller1.Axis2.value()) > 5) {
     left_all.spin(forward,controller1.Axis3.value(), pct); 
     right_all.spin(forward,controller1.Axis2.value() , pct); 
