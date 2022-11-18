@@ -17,6 +17,13 @@ void move_forward(double disMeters, double velPct, int timeout)
     timeOut(0);
 }
 
+void move_back(double disMeters, double velPct, int timeout)
+{
+    timeOut(timeout);
+    right_all.spinFor(reverse, double(disMeters), rev, double(velPct), rpm, false);
+    left_all.spinFor(reverse, double(disMeters), rev, double(velPct), rpm, true);
+    timeOut(0);
+}
 
 void turn_left(double degrees, double velPct, int timeout)
 {

@@ -5,6 +5,7 @@
 
 void timeOut(int timeSeconds);
 void move_forward(double disMeters, double velPct, int timeout); //rotations, speed, timeout
+void move_back(double disMeters, double velPct, int timeout);
 
 void turn_left(double degrees, double velPct, int timeout);
 

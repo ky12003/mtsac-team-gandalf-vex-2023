@@ -10,8 +10,8 @@ void run_roller_blue() {
     right_all.spin(forward, 10, pct);
     printf ("Currently moving forward\n ");
   }
-  left_all.spinFor(fwd, 15 , degrees );
-  right_all.spinFor(fwd, 15 , degrees );
+  left_all.spinFor(fwd, 10 , degrees );
+  right_all.spinFor(fwd, 10 , degrees );
   if((optical_sensor.hue() >100 )&&(optical_sensor.isNearObject()))
   return;
   while(optical_sensor.hue() < 100) {
@@ -23,7 +23,7 @@ void run_roller_blue() {
       printf ("Hue: ");
       printf ("%.2f\n", optical_sensor.hue());
       printf ("seeing red ");
-      roller.spin(forward, 100, pct);
+      roller.spin(fwd, 100, pct);
       left_all.spin(forward, 10, pct);
       right_all.spin(forward, 10, pct);
 
@@ -32,7 +32,7 @@ void run_roller_blue() {
 
     }
     //when not near any object, program outputs "Not detecting"
-    roller.spinFor(fwd, 30, deg);
+    roller.spinFor(fwd, 5, deg);
     printf ("Not detecting\n");
     roller.stop(brake);
     left_back.setBrake(brake);
@@ -65,7 +65,7 @@ void run_roller_red() {
       printf ("Hue: ");
       printf ("%.2f\n", optical_sensor.hue());
       printf ("seeing blue ");
-      roller.spin(forward, 100, pct);
+      roller.spin(fwd, 100, pct);
       left_all.spin(forward, 10, pct);
       right_all.spin(forward, 10, pct);
 
@@ -74,7 +74,7 @@ void run_roller_red() {
 
     }
     //when not near any object, program outputs "Not detecting"
-    roller.spinFor(fwd, 30, deg);
+    roller.spinFor(fwd, 5, deg);
     printf ("Not detecting\n");
     roller.stop(brake);
     left_back.setBrake(brake);
@@ -88,17 +88,18 @@ void run_roller_red() {
   }
 
 void run_roller_blue_safe(){
-  inertial_sensor.resetRotation();
   while(optical_sensor.isNearObject()==false)
   {
     left_all.spin(forward, 10, pct);
     right_all.spin(forward, 10, pct);
     printf ("Currently moving forward\n ");
   }
-  left_all.spinFor(fwd, 10 , degrees );
-  right_all.spinFor(fwd, 10 , degrees );
   if((optical_sensor.hue() >100 )&&(optical_sensor.isNearObject()))
   run_roller_red();
+  else{
+  left_all.spinFor(fwd, 10 , degrees );
+  right_all.spinFor(fwd, 10 , degrees );
+  }
   while(optical_sensor.hue() < 100) {
     if (optical_sensor.isNearObject()) {
       
@@ -108,16 +109,16 @@ void run_roller_blue_safe(){
       printf ("Hue: ");
       printf ("%.2f\n", optical_sensor.hue());
       printf ("seeing red ");
-      roller.spin(forward, 100, pct);
-      left_all.spin(forward, 10, pct);
-      right_all.spin(forward, 10, pct);
+      roller.spin(fwd, 100, pct);
+      left_all.spin(forward, 4, pct);
+      right_all.spin(forward, 4, pct);
 
       }      
       //stops when color detected is no longer the undesired color
 
     }
     //when not near any object, program outputs "Not detecting"
-    roller.spinFor(fwd, 30, deg);
+    roller.spinFor(fwd, 45, deg);
     printf ("Not detecting\n");
     roller.stop(brake);
     left_back.setBrake(brake);
@@ -128,21 +129,24 @@ void run_roller_blue_safe(){
     right_middle.setBrake(brake);
     left_all.stop();
     right_all.stop();
+    move_back(1, 60, 2);
     int error = inertial_sensor.rotation(deg);
     inertial_turn(-error);
   }
 
 void run_roller_red_safe(){
-  inertial_sensor.resetRotation();
   while(optical_sensor.isNearObject()==false)
   {
     left_all.spin(forward, 10, pct);
     right_all.spin(forward, 10, pct);
   }
-  left_all.spinFor(fwd, 10 , degrees );
-  right_all.spinFor(fwd, 10 , degrees );
   if((optical_sensor.hue() <100 )&&(optical_sensor.isNearObject()))
   run_roller_blue();
+  else
+  {
+    left_all.spinFor(fwd, 10 , degrees );
+    right_all.spinFor(fwd, 10 , degrees );
+  }
   while(optical_sensor.hue() > 100) {
     if (optical_sensor.isNearObject()) {
       
@@ -152,16 +156,16 @@ void run_roller_red_safe(){
       printf ("Hue: ");
       printf ("%.2f\n", optical_sensor.hue());
       printf ("seeing blue ");
-      roller.spin(forward, 100, pct);
-      left_all.spin(forward, 10, pct);
-      right_all.spin(forward, 10, pct);
+      roller.spin(fwd, 100, pct);
+      left_all.spin(forward, 4, pct);
+      right_all.spin(forward, 4, pct);
 
       }      
       //stops when color detected is no longer the undesired color
 
     }
     //when not near any object, program outputs "Not detecting"
-    roller.spinFor(fwd, 30, deg);
+    roller.spinFor(fwd, 45, deg);
     printf ("Not detecting\n");
     roller.stop(brake);
     left_back.setBrake(brake);
@@ -172,6 +176,8 @@ void run_roller_red_safe(){
     right_middle.setBrake(brake);
     left_all.stop();
     right_all.stop();
+    
+    move_back(1, 60, 2);
     int error = inertial_sensor.rotation(deg);
     inertial_turn(-error);
   }

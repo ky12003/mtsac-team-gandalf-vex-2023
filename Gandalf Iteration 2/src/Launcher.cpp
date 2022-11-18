@@ -1,14 +1,14 @@
 #include "vex.h"
 #include "robot-config.h"
 
-void fly_wheel_one_forward()
+void fly_wheel_one_forward(int speed)
 {
-  fly_wheel_one.spin(fwd, 100, pct);
+  fly_wheel_one.spin(fwd, speed, pct);
 }
 
-void fly_wheel_two_forward()
+void fly_wheel_two_forward(int speed)
 {
-  fly_wheel_two.spin(fwd, 100, pct);
+  fly_wheel_two.spin(fwd, speed, pct);
 }
 
 void fly_wheel_one_reverse()

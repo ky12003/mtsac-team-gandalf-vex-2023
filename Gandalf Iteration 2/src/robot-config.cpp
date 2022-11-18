@@ -13,10 +13,10 @@ using namespace vex;
 //PORT11: left_front
 //PORT12: left_middle
 //PORT13: left_back
-//PORT14: intake
+//PORT14: intake 1
 //PORT15: roller
-//PORT16:
-//PORT17:
+//PORT16: optical
+//PORT17: intake 2
 //PORT18: right_front
 //PORT19: right_middle
 //PORT20: right_back

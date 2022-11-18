@@ -4,6 +4,8 @@
 #include "intake.h"
 #include "PID.h"
 #include "Roller.h"
+#include "Launcher.h"
+#include "Pneumatics.h"
 #
 /**********************************************************
 calibrated code
@@ -22,39 +24,24 @@ calibrated code
 //Routine 1 Box routine
 void RoutineOne()
 {
-  
+  // while(true)
+  // test_current_hue();
+
+  retract_feeder();
   run_roller_red_safe(); 
-  move_back_PID(30,1.25);
-  inertial_turn (-90);
-  move_forward_PID(30,1.5);
-  run_roller_red_safe();
-  move_back_PID(30,1.5);
-  inertial_turn (90);
-  move_forward_PID(30,1.5);
-  run_roller_blue_safe(); 
-  // run_roller_blue(); 
-  // move_back_PID(30,1);
-  // run_roller_red(); 
-  // move_back_PID(30,1);
-  // run_roller_blue(); 
+  move_back(0.5, 60, 2);
+  inertial_turn(-90);
+  move_forward_PID(30, 1.5);
+  fly_wheel_one_forward(100);
+  fly_wheel_two_forward(100);
+  vex::task::sleep( 4000 );
+  extend_feeder();
+  vex::task::sleep( 1500 );
+  retract_feeder();
+  vex::task::sleep( 1500 );
+  extend_feeder();
 
-  // move_back_PID(30,1.5);
-  // inertial_turn (-90);
-  // move_forward_PID(30,1.3);
-  // run_roller_red(); 
   
-  // move_forward_PID(30, 1); //speed then feet
-  // inertial_turn (90); 
-  // move_forward_PID(30, 1); //speed then feet
-  // inertial_turn (90); 
-  // move_forward_PID(30, 1); //speed then feet
-  // inertial_turn (90); 
-  // move_forward_PID(30, 1); //speed then feet
-  // inertial_turn (90); 
-  //inertial_turn(-360);
-
-  //move_forward_PID(20, 3);//speed in pct then distance 1 disMeter is actually ~1 foot
-  //inertial_turn (1080);
 }
 
 void RoutineTwo()
