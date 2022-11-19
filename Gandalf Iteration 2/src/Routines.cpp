@@ -29,18 +29,23 @@ void RoutineOne()
 
   retract_feeder();
   run_roller_red_safe(); 
-  move_back(0.5, 60, 2);
-  inertial_turn(-90);
-  move_forward_PID(30, 1.5);
-  fly_wheel_one_forward(100);
-  fly_wheel_two_forward(100);
+  move_back(0.525, 60, 2);
+  inertial_turn(90);
+  move_back_PID(20, 3.5);
+  fly_wheel_one_forward(45);
+  fly_wheel_two_forward(45);
+  inertial_turn(-5);
   vex::task::sleep( 4000 );
   extend_feeder();
   vex::task::sleep( 1500 );
   retract_feeder();
-  vex::task::sleep( 1500 );
-  extend_feeder();
-
+  fly_wheel_one.setBrake(coast);
+  fly_wheel_two.setBrake(coast);
+  // vex::task::sleep( 1500 );
+  // extend_feeder();
+  // vex::task::sleep( 1500 );
+  // retract_feeder();
+  // vex::task::sleep( 1500 );
   
 }
 

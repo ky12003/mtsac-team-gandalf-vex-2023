@@ -74,8 +74,8 @@ void TankDrive()
    fly_wheel_one_reverse();
    fly_wheel_two_reverse();
  }else{
-   fly_wheel_one_forward();
-   fly_wheel_two_forward();
+   fly_wheel_one_forward(100);
+   fly_wheel_two_forward(100);
  }
   ///////////////////////////////////////////////////////////////////////////////
   

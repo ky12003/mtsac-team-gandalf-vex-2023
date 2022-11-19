@@ -192,7 +192,6 @@ void move_back_PID(int speed, double disMeters) //speed in pct distance in feet
     derivative = error - last_error;
     vex::task::sleep( 20 );
     last_error = error;
-    
 
     //printf("error: %i    left position: %i    right position %i    last_error: %i   derivative: %i\n",error,leftPosition,rightPosition,last_error,derivative);
     rightSideVel = speed - (error*kP) - (derivative*kD); //sets right side vel

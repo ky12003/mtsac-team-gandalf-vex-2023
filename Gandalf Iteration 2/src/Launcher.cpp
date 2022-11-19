@@ -1,5 +1,6 @@
 #include "vex.h"
 #include "robot-config.h"
+#include "Pneumatics.h"
 
 void fly_wheel_one_forward(int speed)
 {
@@ -43,4 +44,28 @@ void fly_wheel_toggle()
    fly_wheel_one.stop();
    fly_wheel_two.stop();
   }
+}
+
+void wait_shoot() //runs fly wheel, shoots, then stops flywheel
+{
+  fly_wheel_one_forward(100);
+  fly_wheel_two_forward(100);
+  int left_speed = 0;
+  int right_speed = 0;
+  bool waiting = true;
+  while(waiting == true)
+  {
+    left_speed = intake_1.velocity(rpm);
+    right_speed = intake_2.velocity(rpm);
+    if ((left_speed>550)&&(right_speed>550))
+    {
+      extend_feeder();
+      vex::task::sleep( 1000 );
+      retract_feeder();
+      vex::task::sleep( 1000 );
+      waiting = false;
+    }
+  }
+  fly_wheel_one.setBrake(coast);
+  fly_wheel_two.setBrake(coast);
 }
